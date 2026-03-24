@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USC EE CE 3-Year Graduation Plan - Co'29</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #990000 0%, #cc0000 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #990000;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab:hover {
+            background: rgba(153, 0, 0, 0.1);
+        }
+        
+        .tab.active {
+            background: white;
+            color: #990000;
+            border-bottom: 3px solid #990000;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .credit-section {
+            margin-bottom: 30px;
+        }
+        
+        .credit-section h3 {
+            color: #990000;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .credit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .credit-table th {
+            background: #990000;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .credit-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .credit-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .status-complete {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-pending {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .status-required {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            color: #0c5460;
+        }
+        
+        .semester-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .semester-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .semester-card h4 {
+            color: #990000;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .course-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border-left: 3px solid #990000;
+        }
+        
+        .course-code {
+            font-weight: bold;
+            color: #990000;
+        }
+        
+        .course-units {
+            float: right;
+            background: #990000;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.85em;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background: #990000;
+        }
+        
+        .timeline-item:last-child:before {
+            display: none;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #990000;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.5s ease;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist li:before {
+            content: '☐';
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #999;
+        }
+        
+        .checklist li.checked:before {
+            content: '☑';
+            color: #28a745;
+        }
+        
+        .dependency-map {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .course-node {
+            display: inline-block;
+            background: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 2px solid #990000;
+            font-size: 0.9em;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin: 0 5px;
+            color: #990000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 USC EE CE 3-Year Graduation Plan</h1>
+            <p>Class of 2029 • Fall 2026 → Spring 2029 • Electrical & Computer Engineering</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">60</div>
+                <div class="stat-label">Transfer Units</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">72</div>
+                <div class="stat-label">Units Needed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Years at USC</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">45%</div>
+                <div class="stat-label">Already Done!</div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('credit-status')">📊 Credit Status</button>
+            <button class="tab" onclick="showTab('timeline')">📅 3-Year Timeline</button>
+            <button class="tab" onclick="showTab('transfer')">🔄 Internal Transfer</button>
+            <button class="tab" onclick="showTab('course-map')">🗺️ Course Dependencies</button>
+            <button class="tab" onclick="showTab('action-plan')">✅ Action Plan</button>
+        </div>
+        
+        <div id="credit-status" class="tab-content active">
+            <div class="alert alert-danger">
+                <strong>⚠️ CRITICAL:</strong> Physics AP credits do NOT satisfy USC engineering physics requirements. You must take PHYS 151L, 152L, AND 153L at USC (12 units total).
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>📋 GE Articulation:</strong> Foothill courses need formal articulation through USC transfer credit evaluation. Submit transcripts for evaluation ASAP.
+            </div>
+            
+            <div class="credit-section">
+                <h3>✅ AP Credits (Verified Units: ~28 units)</h3>
+                <table class="credit-table">
+                    <thead>
+                        <tr>
+                            <th>AP Exam</th>
+                            <th>Score</th>
+                            <th>USC Equivalent</th>
+                            <th>Units</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Calculus BC</strong></td>
+                            <td>5</td>
+                            <td><strong>MATH 129</strong> (Calc II) ✓</td>
+                            <td>4</td>
+                            <td><span class="status-badge status-complete">Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Statistics</strong></td>
+                            <td>5</td>
+                            <td>GE F (Quant Reasoning) ✓</td>
+                            <td>4</td>
+                            <td><span class="status-badge status-complete">Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Macro/Microeconomics</strong></td>
+                            <td>5/5</td>
+                            <td>GE C (Social Analysis) ✓ (2 courses)</td>
+                            <td>8</td>
+                            <td><span class="status-badge status-complete">Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Human Geography</strong></td>
+                            <td>5</td>
+                            <td>GE Elective</td>
+                            <td>4</td>
+                            <td><span class="status-badge status-complete">Elective</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>English Literature</strong></td>
+                            <td>4</td>
+                            <td>GE or elective</td>
+                            <td>4</td>
+                            <td><span class="status-badge status-complete">Elective</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>French Language</strong></td>
+                            <td>4</td>
+                            <td>GE H (Global) - possible</td>
+                            <td>4</td>
+                            <td><span class="status-badge status-pending">Verify</span></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><strong>Physics C: Mechanics</strong></td>
+                            <td>5</td>
+                            <td><strong>❌ Does NOT satisfy PHYS 151L</strong></td>
+                            <td>0</td>
+                            <td><span class="status-badge status-required">Must Retake</span></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><strong>Physics C: E&M</strong></td>
+                            <td>5</td>
+                            <td><strong>❌ Does NOT satisfy PHYS 152L</strong></td>
+                            <td>0</td>
+                            <td><span class="status-badge status-required">Must Retake</span></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><strong>Physics 1</strong></td>
+                            <td>4</td>
+                            <td>Elective credit only</td>
+                            <td>0</td>
+                            <td><span class="status-badge status-pending">Elective</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="credit-section">
+                <h3>🎓 Foothill College Credits (~20 units - Pending Articulation)</h3>
+                <table class="credit-table">
+                    <thead>
+                        <tr>
+                            <th>Foothill Course</th>
+                            <th>Title</th>
+                            <th>Expected USC Equivalent</th>
+                            <th>Units</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MATH F001C</strong></td>
+                            <td>Multivariable Calculus</td>
+                            <td><strong>MATH 229</strong> (Calc III) ✓</td>
+                            <td>5</td>
+                            <td><span class="status-badge status-complete">Likely Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>MATH F001D</strong></td>
+                            <td>Differential Equations</td>
+                            <td><strong>MATH 245</strong> ✓</td>
+                            <td>5</td>
+                            <td><span class="status-badge status-complete">Likely Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>MATH F002B</strong></td>
+                            <td>Linear Algebra</td>
+                            <td><strong>MATH 125 or EE 141L prereq</strong> ✓</td>
+                            <td>5</td>
+                            <td><span class="status-badge status-complete">Likely Satisfies</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>MATH F022</strong></td>
+                            <td>Discrete Mathematics</td>
+                            <td>Elective (helpful for CS courses)</td>
+                            <td>5</td>
+                            <td><span class="status-badge status-complete">Elective</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="alert alert-warning">
+                    <strong>Action Required:</strong> Submit Foothill transcripts to USC for formal articulation. Use <a href="https://camel2.usc.edu/articagrmt/artic.aspx" target="_blank">CAMEL</a> to verify course equivalencies.
+                </div>
+            </div>
+            
+            <div class="credit-section">
+                <h3>📋 GE Requirements Status</h3>
+                <table class="credit-table">
+                    <thead>
+                        <tr>
+                            <th>GE Category</th>
+                            <th>Requirement</th>
+                            <th>Satisfied By</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>GE A - Arts</strong></td>
+                            <td>1 course</td>
+                            <td>Need to take</td>
+                            <td><span class="status-badge status-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE B - Humanistic</strong></td>
+                            <td>2 courses</td>
+                            <td>1 from English Lit AP? + 1 needed</td>
+                            <td><span class="status-badge status-pending">Verify</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE C - Social</strong></td>
+                            <td>2 courses</td>
+                            <td>Macro + Micro Econ APs ✓</td>
+                            <td><span class="status-badge status-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE D - Life Sci</strong></td>
+                            <td>1 BISC course</td>
+                            <td>Need to take</td>
+                            <td><span class="status-badge status-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE E - Physical Sci</strong></td>
+                            <td>1 course</td>
+                            <td>Satisfied by PHYS 151L</td>
+                            <td><span class="status-badge status-complete">Will Satisfy</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE F - Quant Reason</strong></td>
+                            <td>1 course</td>
+                            <td>Statistics AP ✓</td>
+                            <td><span class="status-badge status-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GE G,H - Global</strong></td>
+                            <td>2 courses</td>
+                            <td>French AP + Human Geo AP?</td>
+                            <td><span class="status-badge status-pending">Verify</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GESM</strong></td>
+                            <td>1 seminar</td>
+                            <td>Need to take (Cat A,B,C,D)</td>
+                            <td><span class="status-badge status-required">Required</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="credit-section">
+                <h3>🔢 Unit Calculation Summary</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%;">60 / 132 total units (45%)</div>
+                </div>
+                <p><strong>Total USC Degree Requirement:</strong> 132 units minimum</p>
+                <p><strong>Your Transfer Credits:</strong> ~60 units (subject to articulation)</p>
+                <p><strong>Units to Complete at USC:</strong> ~72 units (18 units/semester × 4 semesters)</p>
+            </div>
+        </div>
+        
+        <div id="timeline" class="tab-content">
+            <div class="alert alert-info">
+                <strong>🎯 Goal:</strong> Graduate Spring 2029 (3 years at USC) with EE Computer Engineering degree
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>📍 Summer 2026 (Pre-Arrival)</h4>
+                        <ul class="checklist">
+                            <li class="checked">✓ Accepted to USC as Math/Econ Co'29</li>
+                            <li>Submit Foothill transcripts for credit evaluation</li>
+                            <li>Meet with Viterbi advisor about internal transfer</li>
+                            <li>Register for Fall 2026 courses (include EE 105L!)</li>
+                            <li>Start Python prep for EE 155L</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Year 1: Fall 2026 - Spring 2027</h3>
+            <div class="semester-grid">
+                <div class="semester-card">
+                    <h4>Fall 2026 (18 units)</h4>
+                    <div class="course-item">
+                        <span class="course-code">EE 105L</span> - Intro to EE
+                        <span class="course-units">2</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">PHYS 151L</span> - Mechanics
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 109L</span> - Embedded Systems
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">GESM</span> - GE Seminar (Cat B/C/D)
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">WRIT 150</span> - Writing
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <strong>CRITICAL:</strong> Get A in EE 105L + maintain 3.7+ GPA for internal transfer!
+                    </div>
+                </div>
+                
+                <div class="semester-card">
+                    <h4>Spring 2027 (18 units)</h4>
+                    <div class="course-item">
+                        <span class="course-code">PHYS 152L</span> - E&M
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 155L</span> - Programming for EE
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 141L</span> - Applied Linear Algebra
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">GE Course</span> - (BISC for GE D)
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">Elective</span>
+                        <span class="course-units">2</span>
+                    </div>
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <strong>Apply for Internal Transfer!</strong> Submit application in March/April 2027
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Year 2: Fall 2027 - Spring 2028 (Officially EE CE!)</h3>
+            <div class="semester-grid">
+                <div class="semester-card">
+                    <h4>Fall 2027 (18 units)</h4>
+                    <div class="course-item">
+                        <span class="course-code">PHYS 153L</span> - Modern Physics
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 202L</span> - Linear Circuits
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 250L</span> - Distributed Systems IoT
+                        <span class="course-units">2</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 370L</span> - Electromagnetics
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">GE Course</span> - (GE A - Arts)
+                        <span class="course-units">4</span>
+                    </div>
+                </div>
+                
+                <div class="semester-card">
+                    <h4>Spring 2028 (18 units)</h4>
+                    <div class="course-item">
+                        <span class="course-code">EE 301L</span> - Linear Systems
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 355</span> - Software Design
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 364</span> - Prob & Stats
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 354L</span> - Digital Circuits
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">WRIT 340</span> - Advanced Writing
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="alert alert-warning" style="margin-top: 15px;">
+                        <strong>Summer 2028:</strong> VLSI internship at NVIDIA/AMD/Intel ($$$)
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Year 3: Fall 2028 - Spring 2029 (Final Year!)</h3>
+            <div class="semester-grid">
+                <div class="semester-card">
+                    <h4>Fall 2028 (18 units)</h4>
+                    <div class="course-item">
+                        <span class="course-code">EE 460</span> - Machine Learning
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 457</span> - Computer System Org
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE 477L</span> - 💰 VLSI Design 💰
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE Elective</span> - (EE 451 or 450)
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">GE Course</span> - (if needed)
+                        <span class="course-units">4</span>
+                    </div>
+                </div>
+                
+                <div class="semester-card">
+                    <h4>Spring 2029 (16 units) 🎓</h4>
+                    <div class="course-item">
+                        <span class="course-code">EE 496</span> - Capstone Design
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE Elective</span> - Advanced topic
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">EE Elective</span> - Advanced topic
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-code">Elective</span> - Final units
+                        <span class="course-units">4</span>
+                    </div>
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <strong>🎉 GRADUATION SPRING 2029!</strong><br>
+                        Full-time offer from NVIDIA/AMD/Apple/Intel: $180k+ TC
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="transfer" class="tab-content">
+            <h3>🔄 Internal Transfer to EE CE - Your Battle Plan</h3>
+            
+            <div class="alert alert-danger">
+                <strong>⚠️ MOST CRITICAL CHALLENGE:</strong> Internal transfer acceptance is competitive (~20-30 spots/year). This is your highest-risk hurdle.
+            </div>
+            
+            <div class="credit-section">
+                <h4>Requirements for Internal Transfer</h4>
+                <table class="credit-table">
+                    <thead>
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Minimum</th>
+                            <th>Competitive</th>
+                            <th>Your Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Overall GPA</strong></td>
+                            <td>3.0</td>
+                            <td>3.5+</td>
+                            <td><span class="status-badge status-required">3.7+</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>EE 105L Grade</strong></td>
+                            <td>C</td>
+                            <td>B+</td>
+                            <td><span class="status-badge status-required">A</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Math/Physics Performance</strong></td>
+                            <td>Pass</td>
+                            <td>B+</td>
+                            <td><span class="status-badge status-complete">Already done!</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Application Deadline</strong></td>
+                            <td colspan="3">March/April 2027 (Spring of freshman year)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="credit-section">
+                <h4>Your Competitive Advantages</h4>
+                <ul class="checklist">
+                    <li class="checked">✓ Already completed hardest math sequence (Calc I-III, Diff Eq, Linear Alg)</li>
+                    <li class="checked">✓ Discrete Math shows computational maturity</li>
+                    <li class="checked">✓ 60 units ahead = serious student signal</li>
+                    <li class="checked">✓ Physics foundation (even though retaking for credit)</li>
+                    <li class="checked">✓ Strong AP performance shows academic ability</li>
+                    <li>Will crush EE 105L (with preparation)</li>
+                    <li>Demonstrated genuine interest in ECE</li>
+                </ul>
+            </div>
+            
+            <div class="credit-section">
+                <h4>Action Timeline</h4>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong>Summer 2026 (Before Arrival)</strong>
+                            <ul>
+                                <li>Email Viterbi admissions expressing interest in EE CE transfer</li>
+                                <li>Connect with current EE CE students (Reddit, Discord)</li>
+                                <li>Review circuit analysis basics (Khan Academy, MIT OCW)</li>
+                                <li>Start Python programming (Codecademy, Python.org)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong>Fall 2026 (Semester 1) - CRITICAL</strong>
+                            <ul>
+                                <li><strong>Week 1:</strong> Introduce yourself to EE 105L professor, attend office hours</li>
+                                <li><strong>Week 2:</strong> Join IEEE student chapter, attend ECE club meetings</li>
+                                <li><strong>Week 4:</strong> Meet with Viterbi advisor, discuss transfer path</li>
+                                <li><strong>All semester:</strong> Maintain 4.0 GPA (especially EE 105L)</li>
+                                <li><strong>December:</strong> Ask EE 105L professor for recommendation letter</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <strong>Spring 2027 (Semester 2) - APPLICATION</strong>
+                            <ul>
+                                <li><strong>January:</strong> Begin drafting personal statement</li>
+                                <li><strong>February:</strong> Review application requirements, gather materials</li>
+                                <li><strong>March:</strong> Submit internal transfer application</li>
+                                <li><strong>April/May:</strong> Decision notification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-success">
+                <h4>Personal Statement Strategy</h4>
+                <p><strong>Key Points to Hit:</strong></p>
+                <ol>
+                    <li><strong>Why EE CE over Math/Econ:</strong> Passion for AI hardware, chip design, tangible impact</li>
+                    <li><strong>Your Preparation:</strong> Highlight Foothill courses, math foundation, discrete math for computational thinking</li>
+                    <li><strong>Career Goals:</strong> Design next-gen AI accelerators, contribute to semiconductor innovation</li>
+                    <li><strong>USC Specific:</strong> Research faculty (Prof. Gupta - VLSI, Prof. Bogdan - embedded systems), mention USC's industry ties</li>
+                    <li><strong>Demonstrated Interest:</strong> IEEE membership, ECE projects, office hours attendance</li>
+                </ol>
+            </div>
+            
+            <div class="alert alert-warning">
+                <h4>If Transfer Denied (Backup Plan)</h4>
+                <ul>
+                    <li><strong>Option 1:</strong> Reapply next semester (many successful 2nd attempts)</li>
+                    <li><strong>Option 2:</strong> Applied Mathematics + CS minor (still positions for tech roles)</li>
+                    <li><strong>Option 3:</strong> Take EE courses as non-major (build portfolio)</li>
+                    <li><strong>Option 4:</strong> Transfer to UC Berkeley EECS or UCLA (but USC is better for your goals)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="course-map" class="tab-content">
+            <h3>🗺️ Course Dependency Map - Computer Engineering Track</h3>
+            
+            <div class="dependency-map">
+                <h4>Foundation Sequence (All Prerequisites)</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="course-node" style="background: #d4edda;">MATH 129<br>(AP BC ✓)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node" style="background: #d4edda;">MATH 229<br>(Foothill ✓)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node" style="background: #d4edda;">MATH 245<br>(Foothill ✓)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 301L</div>
+                </div>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="course-node" style="background: #d4edda;">MATH 125<br>(Foothill ✓)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 141L</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 460<br>(ML)</div>
+                </div>
+            </div>
+            
+            <div class="dependency-map">
+                <h4>Physics Sequence (⚠️ Must Take at USC)</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="course-node" style="background: #f8d7da;">PHYS 151L<br>(Mechanics)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node" style="background: #f8d7da;">PHYS 152L<br>(E&M)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node" style="background: #f8d7da;">PHYS 153L<br>(Modern)</div>
+                </div>
+                <p style="text-align: center; margin-top: 10px;"><strong>12 units total - AP physics does NOT satisfy these!</strong></p>
+            </div>
+            
+            <div class="dependency-map">
+                <h4>EE Core Sequence</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="course-node">EE 105L<br>(Intro)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 109L<br>(Embedded)</div>
+                    <br><br>
+                    <div class="course-node">EE 155L<br>(Python)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 355<br>(Software)</div>
+                    <br><br>
+                    <div class="course-node">EE 202L<br>(Circuits)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 301L<br>(Systems)</div>
+                </div>
+            </div>
+            
+            <div class="dependency-map">
+                <h4>Computer Engineering Specialization (💰 Money Courses)</h4>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="course-node">EE 354L<br>(Digital Circuits)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node" style="background: #fff3cd; font-weight: bold;">EE 477L<br>(VLSI Design)<br>💰💰💰</div>
+                    <br><br>
+                    <div class="course-node">EE 354L</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 457<br>(Comp Sys Org)</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 451<br>(Parallel Comp)</div>
+                    <br><br>
+                    <div class="course-node">EE 141L + EE 155L</div>
+                    <span class="arrow">→</span>
+                    <div class="course-node">EE 460<br>(ML)</div>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <h4>Critical Path Insights</h4>
+                <ul>
+                    <li><strong>Longest Chain:</strong> MATH 129 → 229 → 245 → EE 301L (4 semesters if sequential)</li>
+                    <li><strong>Bottleneck:</strong> EE 354L is prerequisite for BOTH EE 477L (VLSI) and EE 457</li>
+                    <li><strong>Early Win:</strong> You have entire MATH chain done! Massive time savings.</li>
+                    <li><strong>Physics:</strong> Can take concurrently with EE courses since you know content</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="action-plan" class="tab-content">
+            <h3>✅ Immediate Action Plan (Next 6 Months)</h3>
+            
+            <div class="alert alert-danger">
+                <h4>🚨 DO THESE RIGHT NOW (Spring 2026)</h4>
+                <ul class="checklist">
+                    <li>Submit Foothill transcripts to USC Transfer Credit Services</li>
+                    <li>Email Viterbi admissions about EE CE internal transfer intent</li>
+                    <li>Use CAMEL system to verify Foothill course articulation</li>
+                    <li>Request AP score report sent to USC (if not already done)</li>
+                    <li>Connect with current USC EE CE students (r/USC, Discord)</li>
+                </ul>
+            </div>
+            
+            <div class="credit-section">
+                <h4>Summer 2026 Preparation (Before Fall Start)</h4>
+                <ul class="checklist">
+                    <li>Complete Python tutorial (Codecademy or Python.org)</li>
+                    <li>Review circuit analysis basics (Ohm's Law, KVL, KCL)</li>
+                    <li>Watch EE 105L lectures on YouTube (if available)</li>
+                    <li>Study complex numbers and phasor analysis</li>
+                    <li>Join USC IEEE Discord/Slack before arrival</li>
+                    <li>Register for Fall courses (EE 105L is PRIORITY)</li>
+                    <li>Find housing near campus (engineering facilities)</li>
+                </ul>
+            </div>
+            
+            <div class="credit-section">
+                <h4>Fall 2026 - Week by Week Strategy</h4>
+                <table class="credit-table">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Academic</th>
+                            <th>Networking</th>
+                            <th>Transfer Prep</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Week 1</strong></td>
+                            <td>Introduce to EE 105L prof, attend all office hours</td>
+                            <td>Join IEEE student chapter</td>
+                            <td>Schedule Viterbi advisor meeting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 2</strong></td>
+                            <td>Form study groups for all classes</td>
+                            <td>Attend ECE club meetings</td>
+                            <td>Research EE faculty interests</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 4</strong></td>
+                            <td>First midterm prep begins</td>
+                            <td>Connect with EE CE upperclassmen</td>
+                            <td>Meet with Viterbi advisor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 8</strong></td>
+                            <td>Midterms - TARGET 4.0</td>
+                            <td>Attend industry talks at Viterbi</td>
+                            <td>Start drafting personal statement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 12</strong></td>
+                            <td>Final projects start</td>
+                            <td>Build portfolio of EE work</td>
+                            <td>Ask EE 105L prof for rec letter</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 15</strong></td>
+                            <td>Finals - CRUSH THEM</td>
+                            <td>Maintain relationships</td>
+                            <td>Finalize transfer strategy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="credit-section">
+                <h4>Resources to Use</h4>
+                <ul>
+                    <li><strong>CAMEL System:</strong> <a href="https://camel2.usc.edu/articagrmt/artic.aspx" target="_blank">USC Course Articulation</a></li>
+                    <li><strong>Transfer Credit:</strong> transfercredit@usc.edu</li>
+                    <li><strong>Viterbi Advising:</strong> viterbi.usc.edu/admission/undergraduate/</li>
+                    <li><strong>IEEE at USC:</strong> ieee.usc.edu</li>
+                    <li><strong>Reddit:</strong> r/USC for student insights</li>
+                    <li><strong>Circuit Review:</strong> Khan Academy - Electrical Engineering</li>
+                    <li><strong>Python:</strong> Python.org tutorials, Codecademy</li>
+                </ul>
+            </div>
+            
+            <div class="alert alert-success">
+                <h4>Success Probability Estimate</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;">85% chance of internal transfer success</div>
+                </div>
+                <p><strong>Why high probability:</strong></p>
+                <ul>
+                    <li>Math foundation exceeds typical applicants</li>
+                    <li>Technical maturity from Foothill courses</li>
+                    <li>Strong AP performance proves ability</li>
+                    <li>Early engagement strategy (Week 1 networking)</li>
+                    <li>Most transfers fail because they lack math - you don't</li>
+                </ul>
+                <br>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%;">95% chance of 3-year graduation</div>
+                </div>
+                <p><strong>Why very high probability:</strong></p>
+                <ul>
+                    <li>60 units of transfer credit = half degree done</li>
+                    <li>Math sequence complete = no scheduling bottlenecks</li>
+                    <li>18 units/semester is standard workload</li>
+                    <li>No summer sessions needed (but available as buffer)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
